@@ -26,7 +26,7 @@ public class PaymentController {
    public CommonResult create(Payment payment){
        int i = paymentService.create(payment);
        if (i>0){
-           return new CommonResult(200,"成功");
+           return new CommonResult(200,"成功8001");
        }else {
            return new CommonResult(500,"错误");
        }
@@ -35,7 +35,7 @@ public class PaymentController {
     public CommonResult get(@PathVariable("id") Long id){
         Payment payment = paymentService.getPayment(id);
         if (payment!=null){
-            return new CommonResult(200,"成功00011",payment);
+            return new CommonResult(200,"成功8001",payment);
         }else {
             return new CommonResult(500,"错误");
         }

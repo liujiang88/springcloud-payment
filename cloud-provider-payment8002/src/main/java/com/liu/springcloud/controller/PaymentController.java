@@ -33,7 +33,7 @@ public class PaymentController {
     public CommonResult get(@PathVariable("id") Long id){
         Payment payment = paymentService.getPayment(id);
         if (payment!=null){
-            return new CommonResult(200,"成功00011",payment);
+            return new CommonResult(200,"成功8002",payment);
         }else {
             return new CommonResult(500,"错误");
         }
