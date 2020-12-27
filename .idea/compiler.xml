@@ -16,6 +16,8 @@
         <module name="cloud-consumer-zookeeeper-80" />
         <module name="cloud-consumer-consul80" />
         <module name="cloud-providerconsul-payment8006" />
+        <module name="cloud-provider-hystrix-8001" />
+        <module name="cloud-consumer-feign-80" />
         <module name="cloud-consumer-80" />
       </profile>
     </annotationProcessing>

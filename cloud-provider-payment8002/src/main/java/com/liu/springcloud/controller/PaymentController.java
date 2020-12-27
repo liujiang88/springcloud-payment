@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author 刘江
@@ -32,6 +33,11 @@ public class PaymentController {
     @GetMapping(value = "/payment/get/{id}")
     public CommonResult get(@PathVariable("id") Long id){
         Payment payment = paymentService.getPayment(id);
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         if (payment!=null){
             return new CommonResult(200,"成功8002",payment);
         }else {

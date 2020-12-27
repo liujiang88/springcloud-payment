@@ -1,0 +1,24 @@
+server:
+  port: 80
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+
+spring:
+  application:
+    name: cloud-80
+ribbon:
+  #设置等待超时时间
+  ReadTimeout: 5000
+  Connectimeout: 5000
+    #设置连接超时时间
+logging:
+  level:
+    #feign 把paymentFeign的日志级别调成debug
+    com.liu.springcloud.service.PaymentFeign: debug
+feign:
+  hystrix:
+    enabled: true
