@@ -24,4 +24,8 @@ public class FeignController {
     public String getInfo(@PathVariable("id") Integer id){
         return paymentFeign.get(Long.valueOf(id));
     }
+    @GetMapping("/feign/breaker/{id}")
+    public String breaker(@PathVariable("id") Integer id){
+        return paymentFeign.get(Long.valueOf(id));
+    }
 }

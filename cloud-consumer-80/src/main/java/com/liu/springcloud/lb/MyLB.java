@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class MyLB implements LoadBalancer {
     private AtomicInteger atomicInteger=new AtomicInteger(0);
-    public final int getAndIncrement(){
+    public final int getAndIncrement(){   //返回12345到2147483647的整数
         int current;
         int next;
         do {

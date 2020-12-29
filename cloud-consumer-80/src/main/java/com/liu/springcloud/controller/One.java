@@ -34,12 +34,12 @@ public class One {
   }
   @GetMapping(value = "/consumer/payment/{id}")
   public CommonResult getPayments(@PathVariable Long id){
-    List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
+    List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");  //获取可用服务器列表
     instances.forEach(System.out::println);
     if (instances==null || instances.size()<=0){
       return null;
     }
-    ServiceInstance instances1 = loadBalancer.instances(instances);
+    ServiceInstance instances1 = loadBalancer.instances(instances);  //调用自定义负载均衡算法  获取相应的服务器信息
     URI uri = instances1.getUri();
     return restTemplate.getForObject(uri+"/payment/get/"+id,CommonResult.class);
   }

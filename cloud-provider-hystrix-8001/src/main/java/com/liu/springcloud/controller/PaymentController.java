@@ -29,4 +29,9 @@ public class PaymentController {
         log.info("*****{}",s);
         return s;
     }
+    @GetMapping("/payment/hystrix/breaker/{id}")
+    public String breaker(@PathVariable("id") Long id){
+        String s = paymentService.paymentCircuitBreaker(Long.valueOf(id));
+        return s;
+    }
 }

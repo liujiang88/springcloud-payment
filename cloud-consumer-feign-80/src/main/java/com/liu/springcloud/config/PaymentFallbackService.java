@@ -1,6 +1,5 @@
 package com.liu.springcloud.config;
 
-import com.liu.springcloud.entities.CommonResult;
 import com.liu.springcloud.service.PaymentFeign;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +11,11 @@ import org.springframework.stereotype.Component;
 public class PaymentFallbackService implements PaymentFeign {
     @Override
     public String get(Long id) {
+        return "服务降级";
+    }
+
+    @Override
+    public String breaker(Long id) {
         return "服务降级";
     }
 }

@@ -5,6 +5,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -40,5 +41,19 @@ public class PaymentService {
     }
     public String PaymentInfo_OneHandler(){
         return "线程池"+Thread.currentThread().getName()+"系统统一错误  out";
+    }
+    @HystrixCommand(fallbackMethod = "paymentCircuitBreaker_fallback",commandProperties = {     //可搜索HystrixCommandProperties 查看完整配置
+        @HystrixProperty(name = "circuitBreaker.enabled",value = "true"),   //是否开启断路器
+         @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold",value = "10"), //请求次数
+          @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds",value = "10000"), //时间窗口
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage",value = "60") //失败率达到多少后跳闸
+    })
+    public String paymentCircuitBreaker(Long id){
+        if (id<0){throw new RuntimeException("id no null");}
+        return Thread.currentThread().getName()+ UUID.randomUUID().toString();
+    }
+    public String paymentCircuitBreaker_fallback(Long id)
+    {
+        return "id not null";
     }
 }
