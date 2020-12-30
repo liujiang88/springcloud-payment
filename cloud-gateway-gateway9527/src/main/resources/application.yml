@@ -13,8 +13,18 @@ spring:
     name: cloud-gateway
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true  #开启动态路由
       routes:
         - id: payment_routh
-          uri: http://localhost:8001
+          uri: lb://CLOUD-PAYMENT-SERVICE     # uri: http://localhost:8001
           predicates:
-            - Path=/payment/hystrix/ok/**
+            - Path=/payment/get/**
+            - Method=Get
+#            - Query=username,\d+     #请求带参数username名值为整数
+#            - Cookie=username,zzyy   #带Cookie 用户名为zzyy
+#            - Header=X-Request-Id,\d+  #请求头必须带X-Request-Id  并行参数为整数
+#            - After=2020-12-29T17:21:29.280+08:00[Asia/Shanghai]
+#            - Before=2020-12-29T17:21:29.280+08:00[Asia/Shanghai]
+#            - Between=2020-12-29T17:21:29.280+08:00[Asia/Shanghai],2020-12-29T17:22:29.280+08:00[Asia/Shanghai]

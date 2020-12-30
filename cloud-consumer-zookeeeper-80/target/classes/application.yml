@@ -6,4 +6,4 @@ spring:
     name: cloud-80
   cloud:
     zookeeper:
-      connect-string: 192.168.253.136:2181
+      connect-string: 192.168.253.136:2181   //对应服务器zookeeper地址

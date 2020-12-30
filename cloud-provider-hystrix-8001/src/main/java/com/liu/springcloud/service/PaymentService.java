@@ -22,7 +22,7 @@ public class PaymentService {
      */
     @HystrixCommand  //统一熔断
  public String payment_OK(Long id){
-        int i=10/0;
+     //   int i=10/0;
      return "线程池"+Thread.currentThread().getName()+"payment_OK:"+id+"hhh";
  }
    @HystrixCommand(fallbackMethod = "PaymentInfo_TimeOutHandler",commandProperties = {
