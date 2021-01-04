@@ -14,7 +14,20 @@ spring:
           skip-ssl-validation: true
           default-label: master
           search-paths: springcloud-config
+  rabbitmq:
+    password: admin
+    username: admin
+    host: 192.168.253.136
+    port: 5672
+    template:
+      reply-timeout: 30000
+      receive-timeout: 30000
 eureka:
   client:
     service-url:
       defaultZone : http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
