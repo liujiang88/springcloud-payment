@@ -28,6 +28,7 @@
       <module>cloud-stream-rabbitmq-8801</module>
       <module>cloud-stream-rabbitmq-provide-8802</module>
       <module>cloud-stream-rabbitmq-provider-8803</module>
+    <module>cloudalibaba-provider-payment9001</module>
   </modules>
   <packaging>pom</packaging>
 
